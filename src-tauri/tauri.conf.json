@@ -52,7 +52,8 @@
         "resizable": false,
         "title": "",
         "width": 700,
-        "height": 200
+        "height": 200,
+        "transparent": true
       }
     ]
   }
