@@ -1,11 +1,7 @@
 type Props = {
-  children?: JSX.Element
+  children?: any
 }
 
-export function Container ({ children }: Props) {
-  return (
-    <main className="container">
-      {children}
-    </main>
-  )
+export function Container({ children }: Props) {
+  return <main className="container">{children}</main>
 }

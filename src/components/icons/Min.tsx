@@ -1,12 +1,7 @@
-export function Min () {
+export function Min() {
   return (
-    <svg
-    xmlns="http://www.w3.org/2000/svg"
-    width={13}
-    height={2}
-    fill="none"
-  >
-    <path stroke="#572D1C" strokeLinecap="round" strokeWidth={2} d="M1 1h11" />
-  </svg>
+    <svg fill="none" height={2} width={13} xmlns="http://www.w3.org/2000/svg">
+      <path d="M1 1h11" stroke="#572D1C" strokeLinecap="round" strokeWidth={2} />
+    </svg>
   )
 }

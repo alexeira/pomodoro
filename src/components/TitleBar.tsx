@@ -1,7 +1,7 @@
-import { Exit } from "./icons/Exit";
-import { Min } from "./icons/Min";
+import { Exit } from './icons/Exit'
+import { Min } from './icons/Min'
 
-export function TitleBar () {
+export function TitleBar() {
   return (
     <div data-tauri-drag-region className="titlebar">
       <div className="titlebar-button" id="titlebar-minimize">
