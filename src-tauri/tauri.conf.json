@@ -49,10 +49,14 @@
       {
         "decorations": false,
         "fullscreen": false,
-        "resizable": false,
+        "resizable": true,
         "title": "",
-        "width": 700,
+        "width": 600,
+        "maxWidth": 600,
+        "minWidth": 300,
         "height": 200,
+        "minHeight": 150,
+        "maxHeight": 200,
         "transparent": true
       }
     ]
