@@ -27,9 +27,9 @@ export function PauseButton({ pauseTimer }: { pauseTimer: () => void }) {
   )
 }
 
-export function NextButton() {
+export function NextButton({ nextCycle }: { nextCycle: () => void }) {
   return (
-    <button data-title="Siguiente">
+    <button data-title="Siguiente" onClick={nextCycle}>
       <Next />
     </button>
   )
