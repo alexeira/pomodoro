@@ -5,7 +5,7 @@ import { PomodoroContextProps } from '../interfaces'
 
 export function usePomodoro() {
   const pomodoroContext = useContext(PomodoroContext)
-  const { pomodoro, isRunning, setPomodoro, startTimer, pauseTimer, stopTimer } =
+  const { pomodoro, isRunning, setPomodoro, startTimer, pauseTimer, stopTimer, nextCycle } =
     pomodoroContext as PomodoroContextProps
 
   function formatTime(time: number) {
@@ -17,5 +17,14 @@ export function usePomodoro() {
 
   const formatedTime = formatTime(pomodoro.timeRemaining)
 
-  return { pomodoro, isRunning, formatedTime, setPomodoro, startTimer, pauseTimer, stopTimer }
+  return {
+    pomodoro,
+    isRunning,
+    formatedTime,
+    setPomodoro,
+    startTimer,
+    pauseTimer,
+    stopTimer,
+    nextCycle
+  }
 }
