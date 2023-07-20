@@ -7,8 +7,14 @@ export const PomodoroContext = createContext<PomodoroContextProps | null>(null)
 export function PomodoroProvider({ children }: { children: React.ReactNode }) {
   const [pomodoro, setPomodoro] = useState<Pomodoro>({
     timeRemaining: 1500,
-    doing: 'studying'
+    doing: 'studying',
+    cycle: 'pomodoro',
+    cycleCounter: 1
   })
+
+  const currentDoing = pomodoro.doing
+  const currentCycle = pomodoro.cycle
+  const currentCycleCounter = pomodoro.cycleCounter
 
   const [isRunning, setIsRunning] = useState(false)
 
@@ -49,8 +55,50 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
     setIsRunning(false)
     setPomodoro({
       timeRemaining: 1500,
-      doing: 'studying'
+      doing: 'studying',
+      cycle: currentCycle,
+      cycleCounter: 1
     })
+  }
+
+  function nextCycle() {
+    setIsRunning(false)
+
+    if (currentCycle === 'pomodoro' && currentCycleCounter % 4 !== 0) {
+      setPomodoro({
+        timeRemaining: 300,
+        doing: currentDoing,
+        cycle: 'short-break',
+        cycleCounter: currentCycleCounter
+      })
+    }
+
+    if (currentCycle === 'short-break' && currentCycleCounter % 4 !== 0) {
+      setPomodoro({
+        timeRemaining: 1500,
+        doing: currentDoing,
+        cycle: 'pomodoro',
+        cycleCounter: currentCycleCounter + 1
+      })
+    }
+
+    if (currentCycle === 'pomodoro' && currentCycleCounter % 4 === 0) {
+      setPomodoro({
+        timeRemaining: 900,
+        doing: currentDoing,
+        cycle: 'long-break',
+        cycleCounter: currentCycleCounter
+      })
+    }
+
+    if (currentCycle === 'long-break') {
+      setPomodoro({
+        timeRemaining: 1500,
+        doing: currentDoing,
+        cycle: 'pomodoro',
+        cycleCounter: currentCycleCounter + 1
+      })
+    }
   }
 
   return (
@@ -61,7 +109,8 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
         setPomodoro,
         startTimer,
         pauseTimer,
-        stopTimer
+        stopTimer,
+        nextCycle
       }}
     >
       {children}
