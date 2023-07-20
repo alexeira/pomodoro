@@ -1,0 +1,27 @@
+.doing-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .5rem;
+}
+
+.doing {
+  color: #572d1c;
+  text-align: center;
+  font-family: DM Sans;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: 0.31px;
+  user-select: none;
+}
+
+.cycle-counter {
+  font-size: 24px;
+  font-family: DM Sans;
+  font-weight: 700;
+  width: 30px;
+  padding-block-start: .32rem;
+  user-select: none;
+}
