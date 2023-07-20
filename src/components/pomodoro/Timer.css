@@ -1,0 +1,12 @@
+.timer {
+  color: #f7b88b;
+  text-align: center;
+  font-family: DM Mono, monospace;
+  font-size: 62px;
+  font-style: normal;
+  font-weight: bold;
+  line-height: normal;
+  letter-spacing: 1%;
+  -webkit-text-stroke: 2px #572d1c;
+  user-select: none;
+}
