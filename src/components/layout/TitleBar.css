@@ -1,0 +1,29 @@
+.titlebar {
+  height: 30px;
+  user-select: none;
+  display: flex;
+  justify-content: flex-end;
+  position: fixed;
+  top: .5px;
+  left: 0;
+  right: .6px;
+}
+
+.titlebar-button {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  transition: background 200ms;
+
+  &:hover,
+  &:focus {
+    background: var(--peash);
+
+    &:nth-child(3) {
+      border-top-right-radius: 2.7px;
+      background: var(--damasco);
+    }
+  }
+}

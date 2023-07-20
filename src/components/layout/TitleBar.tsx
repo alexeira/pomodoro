@@ -1,6 +1,5 @@
-import { Config } from '../icons/Config'
-import { Exit } from '../icons/Exit'
-import { Min } from '../icons/Min'
+import { Config, Exit, Min } from '../icons/TitleBarIo'
+import './TitleBar.css'
 
 export function TitleBar() {
   return (
