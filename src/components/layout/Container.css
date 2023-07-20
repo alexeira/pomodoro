@@ -1,0 +1,11 @@
+.container {
+  border: 1px solid #572d1c;
+  background-color: #fff5ee;
+  border-radius: 5px;
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  text-align: center;
+  overflow: hidden;
+}

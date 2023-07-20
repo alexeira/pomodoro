@@ -1,3 +1,5 @@
+import './Container.css'
+
 type Props = {
   children?: any
 }
