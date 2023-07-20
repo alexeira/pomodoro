@@ -13,6 +13,14 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+
+  --seal-brown: #572d1c;
+  --bole: #773f29;
+  --seashell: #fff5ee;
+  --peash: #f7b88b;
+  --damasco: #ef6351;
+  --font-dm-sans: DM Sans;
+  --font-dm-mono: DM Mono;
 }
 
 *,
@@ -33,81 +41,8 @@ svg {
   max-width: 100%;
 }
 
-.timer {
-  color: #f7b88b;
-  text-align: center;
-  font-family: DM Mono, monospace;
-  font-size: 62px;
-  font-style: normal;
-  font-weight: bold;
-  line-height: normal;
-  letter-spacing: 1%;
-  -webkit-text-stroke: 2px #572d1c;
-  user-select: none;
-}
-
-.container {
-  border: 1px solid #572d1c;
-  background-color: #fff5ee;
-  border-radius: 5px;
-  min-height: 100dvh;
-  display: flex;
-  justify-content: center;
-  gap: 40px;
-  text-align: center;
-  overflow: hidden;
-
-}
-
-.titlebar {
-  height: 30px;
-  user-select: none;
-  display: flex;
-  justify-content: flex-end;
-  position: fixed;
-  top: .5px;
-  left: 0;
-  right: .6px;
-}
-
-.titlebar-button {
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
-  height: 30px;
-  transition: background 200ms;
-}
-
-.titlebar-button:nth-child(3) {
-  border-top-right-radius: 5px;
-}
-
-.titlebar-button:hover {
-  background: #f7b88b;
-}
-
 button {
   position: relative;
-}
-
-.none {
-  max-height: 50px;
-}
-
-button::after {
-  content: attr(data-title);
-  position: absolute;
-  border: 1px solid blue;
-  background: red;
-  top: -30px;
-  left: 0;
-  margin-inline: auto;
-  padding: 5px;
-  border-radius: 4px;
-  opacity: 0;
-  transition: opacity 400ms;
-  pointer-events: none;
 }
 
 button:hover::after {
@@ -119,8 +54,8 @@ button:hover::after {
 }
 
 button:hover .next {
-  fill: #572d1c;
-  stroke: #572d1c;
+  fill: var(--seal-brown);
+  stroke: var(--seal-brown);
 }
 
 .circle {
@@ -129,12 +64,6 @@ button:hover .next {
 
 .titlebar-button:hover .circle {
   fill: #f7b88b;
-}
-
-.timer-section {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
 }
 
 .buttons-section {
@@ -162,16 +91,4 @@ button:hover svg {
 
 button:active svg {
   scale: 1;
-}
-
-.doing {
-  color: #572d1c;
-  text-align: center;
-  font-family: DM Sans;
-  font-size: 31px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: normal;
-  letter-spacing: 0.31px;
-  user-select: none;
 }
