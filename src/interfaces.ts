@@ -1,6 +1,10 @@
+type PomodoroCycle = 'pomodoro' | 'short-break' | 'long-break'
+
 export interface Pomodoro {
   timeRemaining: number
   doing: string
+  cycle: PomodoroCycle
+  cycleCounter: number
 }
 
 export interface PomodoroContextProps {
@@ -10,4 +14,5 @@ export interface PomodoroContextProps {
   startTimer: () => void
   pauseTimer: () => void
   stopTimer: () => void
+  nextCycle: () => void
 }
