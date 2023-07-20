@@ -1,0 +1,6 @@
+.pomodoro {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-inline: 1rem;
+}
