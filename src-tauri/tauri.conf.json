@@ -22,12 +22,13 @@
         "close": true,
         "hide": true,
         "show": true,
-        "maximize": true,
+        "maximize": false,
         "minimize": true,
-        "unmaximize": true,
+        "unmaximize": false,
         "unminimize": true,
         "startDragging": true,
-        "setDecorations": true
+        "setDecorations": true,
+        "center": true
       }
     },
     "bundle": {
@@ -50,14 +51,17 @@
         "decorations": false,
         "fullscreen": false,
         "resizable": true,
+        "maximizable": true,
+        "maximized": false,
         "title": "",
-        "width": 600,
-        "maxWidth": 600,
-        "minWidth": 300,
-        "height": 200,
-        "minHeight": 150,
-        "maxHeight": 200,
-        "transparent": true
+        "width": 450,
+        "maxWidth": 500,
+        "minWidth": 250,
+        "height": 240,
+        "minHeight": 225,
+        "maxHeight": 250,
+        "transparent": true,
+        "center": true
       }
     ]
   }
