@@ -7,9 +7,9 @@ export function TimerMenu() {
 
   return (
     <section className="buttons-section">
-      <StopButton stopTimer={stopTimer} />
+      <StopButton isRunning={isRunning} stopTimer={stopTimer} />
       {isRunning ? <PauseButton pauseTimer={pauseTimer} /> : <PlayButton startTimer={startTimer} />}
-      <NextButton nextCycle={nextCycle} />
+      <NextButton isRunning={isRunning} nextCycle={nextCycle} />
     </section>
   )
 }
