@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react'
+import { createContext, useCallback, useEffect, useState } from 'react'
 
 import { Pomodoro, PomodoroContextProps } from '../interfaces'
 
@@ -12,11 +12,73 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
     cycleCounter: 1
   })
 
-  const currentDoing = pomodoro.doing
-  const currentCycle = pomodoro.cycle
-  const currentCycleCounter = pomodoro.cycleCounter
-
   const [isRunning, setIsRunning] = useState(false)
+
+  const nextCycle = useCallback(() => {
+    setIsRunning(false)
+
+    const { doing, cycle, cycleCounter } = pomodoro
+
+    if (cycle === 'pomodoro' && cycleCounter % 4 !== 0) {
+      setPomodoro(prevPomodoro => ({
+        ...prevPomodoro,
+        timeRemaining: 300,
+        doing: doing,
+        cycle: 'short-break',
+        cycleCounter: cycleCounter
+      }))
+    }
+
+    if (cycle === 'short-break' && cycleCounter % 4 !== 0) {
+      setPomodoro(prevPomodoro => ({
+        ...prevPomodoro,
+        timeRemaining: 1500,
+        doing: doing,
+        cycle: 'pomodoro',
+        cycleCounter: cycleCounter + 1
+      }))
+    }
+
+    if (cycle === 'pomodoro' && cycleCounter % 4 === 0) {
+      setPomodoro(prevPomodoro => ({
+        ...prevPomodoro,
+        timeRemaining: 900,
+        doing: doing,
+        cycle: 'long-break',
+        cycleCounter: cycleCounter
+      }))
+    }
+
+    if (cycle === 'long-break') {
+      setPomodoro(prevPomodoro => ({
+        ...prevPomodoro,
+        timeRemaining: 1500,
+        doing: doing,
+        cycle: 'pomodoro',
+        cycleCounter: cycleCounter + 1
+      }))
+    }
+  }, [pomodoro])
+
+  function startTimer() {
+    setIsRunning(true)
+    handleInterval()
+  }
+
+  function pauseTimer() {
+    setIsRunning(false)
+  }
+
+  function stopTimer() {
+    setIsRunning(false)
+    setPomodoro(prevPomodoro => ({
+      ...prevPomodoro,
+      timeRemaining: 1500,
+      doing: prevPomodoro.doing,
+      cycle: 'pomodoro',
+      cycleCounter: 1
+    }))
+  }
 
   function handleInterval() {
     setPomodoro(prevPomodoro => ({
@@ -35,78 +97,19 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
       }, 1000)
     }
 
-    if (!isRunning || timeRemaining === 0) {
+    if (isRunning && timeRemaining === 0) {
+      nextCycle()
       clearInterval(timer)
     }
 
     return () => clearInterval(timer)
-  }, [isRunning, pomodoro])
-
-  function startTimer() {
-    setIsRunning(true)
-    handleInterval()
-  }
-
-  function pauseTimer() {
-    setIsRunning(false)
-  }
-
-  function stopTimer() {
-    setIsRunning(false)
-    setPomodoro({
-      timeRemaining: 1500,
-      doing: 'studying',
-      cycle: currentCycle,
-      cycleCounter: 1
-    })
-  }
-
-  function nextCycle() {
-    setIsRunning(false)
-
-    if (currentCycle === 'pomodoro' && currentCycleCounter % 4 !== 0) {
-      setPomodoro({
-        timeRemaining: 300,
-        doing: currentDoing,
-        cycle: 'short-break',
-        cycleCounter: currentCycleCounter
-      })
-    }
-
-    if (currentCycle === 'short-break' && currentCycleCounter % 4 !== 0) {
-      setPomodoro({
-        timeRemaining: 1500,
-        doing: currentDoing,
-        cycle: 'pomodoro',
-        cycleCounter: currentCycleCounter + 1
-      })
-    }
-
-    if (currentCycle === 'pomodoro' && currentCycleCounter % 4 === 0) {
-      setPomodoro({
-        timeRemaining: 900,
-        doing: currentDoing,
-        cycle: 'long-break',
-        cycleCounter: currentCycleCounter
-      })
-    }
-
-    if (currentCycle === 'long-break') {
-      setPomodoro({
-        timeRemaining: 1500,
-        doing: currentDoing,
-        cycle: 'pomodoro',
-        cycleCounter: currentCycleCounter + 1
-      })
-    }
-  }
+  }, [pomodoro, isRunning, nextCycle])
 
   return (
     <PomodoroContext.Provider
       value={{
         pomodoro,
         isRunning,
-        setPomodoro,
         startTimer,
         pauseTimer,
         stopTimer,
