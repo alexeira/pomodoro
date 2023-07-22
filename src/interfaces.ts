@@ -9,7 +9,6 @@ export interface Pomodoro {
 
 export interface PomodoroContextProps {
   pomodoro: Pomodoro
-  setPomodoro: React.Dispatch<React.SetStateAction<Pomodoro>>
   isRunning: boolean
   startTimer: () => void
   pauseTimer: () => void
