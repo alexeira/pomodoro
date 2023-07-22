@@ -1,8 +1,21 @@
 import { Next, Pause, Play, Stop } from '../icons/TimerMenuIo'
+import './Buttons.css'
 
-export function StopButton({ stopTimer }: { stopTimer: () => void }) {
+export function StopButton({
+  isRunning,
+  stopTimer
+}: {
+  isRunning: boolean
+  stopTimer: () => void
+}) {
   return (
-    <button data-title="Parar" onClick={stopTimer}>
+    <button
+      className={`menu-button stop-button ${isRunning ? 'hidden-button' : ''}`}
+      data-title="Parar"
+      disabled={isRunning}
+      tabIndex={isRunning ? -1 : 0}
+      onClick={stopTimer}
+    >
       <Stop />
     </button>
   )
@@ -10,7 +23,12 @@ export function StopButton({ stopTimer }: { stopTimer: () => void }) {
 
 export function PlayButton({ startTimer }: { startTimer: () => void }) {
   return (
-    <button data-title="Reproducir" onClick={startTimer}>
+    <button
+      className="menu-button play-button"
+      data-title="Reproducir"
+      tabIndex={1}
+      onClick={startTimer}
+    >
       <Play />
     </button>
   )
@@ -18,15 +36,32 @@ export function PlayButton({ startTimer }: { startTimer: () => void }) {
 
 export function PauseButton({ pauseTimer }: { pauseTimer: () => void }) {
   return (
-    <button data-title="Pausar" onClick={pauseTimer}>
+    <button
+      className="menu-button pause-button"
+      data-title="Pausar"
+      tabIndex={2}
+      onClick={pauseTimer}
+    >
       <Pause />
     </button>
   )
 }
 
-export function NextButton({ nextCycle }: { nextCycle: () => void }) {
+export function NextButton({
+  isRunning,
+  nextCycle
+}: {
+  isRunning: boolean
+  nextCycle: () => void
+}) {
   return (
-    <button data-title="Siguiente" onClick={nextCycle}>
+    <button
+      className={`menu-button next-button ${isRunning ? 'hidden-button' : ''}`}
+      data-title="Siguiente"
+      disabled={isRunning}
+      tabIndex={isRunning ? -1 : 3}
+      onClick={nextCycle}
+    >
       <Next />
     </button>
   )

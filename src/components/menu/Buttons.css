@@ -1,0 +1,95 @@
+.buttons-section {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-block-start: 1.5rem;
+  margin-inline-end: .56rem;
+}
+
+.menu-button {
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--seashell);
+  padding: 0;
+  border-radius: 100vh;
+  width: 50px;
+  height: 50px;
+  outline: none;
+
+  &:focus-visible {
+    outline: 2px solid var(--bole);
+  }
+
+  &.play-button svg {
+    margin-inline-start: 1px;
+  }
+}
+
+.play-button,
+.pause-button {
+  margin-inline-start: 5px;
+}
+
+:is(.stop-button, .play-button, .pause-button) {
+  background: var(--seal-brown);
+
+  &:hover,
+  &:focus-visible {
+    scale: 1.03;
+  }
+
+  &:active {
+    scale: 1;
+  }
+}
+
+.next-button {
+  background: none;
+  margin-inline-start: -1px;
+  border-radius: 5px;
+  min-width: 45px;
+  height: 45px;
+
+  & path {
+    fill: var(--bole);
+    stroke: var(--bole);
+    transition: fill 150ms ease, stroke 150ms ease;
+  }
+
+  &:hover path {
+    fill: var(--seal-brown);
+    stroke: var(--seal-brown);
+  }
+
+  &:active path {
+    fill: var(--bole);
+    stroke: var(--bole);
+  }
+}
+
+.stop-button,
+.next-button {
+  opacity: 1;
+  rotate: 0;
+  translate: 0;
+  transition: opacity 150ms, rotate 150ms, translate 150ms ease-out;
+}
+
+.hidden-button {
+  opacity: 0;
+  transition: opacity 150ms;
+}
+
+.stop-button.hidden-button {
+  translate: -40px 0;
+  rotate: -50deg;
+  transition: rotate 150ms ease-out, translate 150ms ease-out;
+}
+
+.next-button.hidden-button {
+  translate: 40px 0;
+  rotate: 50deg;
+  transition: rotate 150ms ease-out, translate 150ms ease-out;
+}

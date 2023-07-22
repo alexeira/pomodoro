@@ -1,15 +1,12 @@
 .doing-section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: .5rem;
+  opacity: 1;
+  transition: opacity 250ms;
 }
 
 .doing {
   color: #572d1c;
-  text-align: center;
   font-family: DM Sans;
-  font-size: 28px;
+  font-size: clamp(1.25rem, 5vw, 2rem);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -17,11 +14,12 @@
   user-select: none;
 }
 
-.cycle-counter {
-  font-size: 24px;
-  font-family: DM Sans;
-  font-weight: 700;
-  width: 30px;
-  padding-block-start: .32rem;
-  user-select: none;
+span .cycle-counter {
+  margin-block-start: .32rem;
+  margin-inline: .5rem;
+}
+
+.doing-animation {
+  transition: opacity 250ms;
+  opacity: 0;
 }
