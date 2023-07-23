@@ -40,6 +40,7 @@
         "icons/128x128.png",
         "icons/128x128@2x.png",
         "icons/icon.icns",
+        "icons/icon.png",
         "icons/icon.ico"
       ]
     },
@@ -57,9 +58,9 @@
         "width": 450,
         "maxWidth": 500,
         "minWidth": 250,
-        "height": 240,
-        "minHeight": 225,
-        "maxHeight": 250,
+        "height": 245,
+        "minHeight": 240,
+        "maxHeight": 265,
         "transparent": true,
         "center": true
       }
