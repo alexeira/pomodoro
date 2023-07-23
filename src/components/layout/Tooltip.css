@@ -1,0 +1,31 @@
+.tooltip {
+  position: relative;
+  display: inline-block;
+  user-select: none;
+}
+
+.tooltip-text,
+.tooltip-text:focus {
+  position: absolute;
+  font-size: 0.8rem;
+  top: -33px;
+  background-color: var(--bole);
+  backdrop-filter: blur(10px);
+  color: var(--seashell);
+  padding: 2.2px 5px;
+  border-radius: 3px;
+  z-index: 1;
+  min-width: 50px;
+  animation: fadeIn 250ms ease-in-out;
+  user-select: none;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
