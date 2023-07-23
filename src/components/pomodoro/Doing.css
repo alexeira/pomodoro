@@ -1,25 +1,45 @@
 .doing-section {
+  position: fixed;
   opacity: 1;
   transition: opacity 250ms;
+  height: min(50px, 10vw);
 }
 
-.doing {
+.text-doing {
   color: #572d1c;
   font-family: DM Sans;
-  font-size: clamp(1.25rem, 5vw, 2rem);
+  font-size: clamp(1rem, 5vw, 1.8rem);
   font-style: normal;
   font-weight: 700;
   line-height: normal;
   letter-spacing: 0.31px;
   user-select: none;
+  max-height: 25px;
 }
 
-span .cycle-counter {
-  margin-block-start: .32rem;
-  margin-inline: .5rem;
+span.cycle-counter {
+  display: inline-block;
+  margin-block-start: .38rem;
+  margin-inline-start: min(5px, 1vw, 7px);
+  width: 30px;
+}
+
+.cycle-counter-animation {
+  animation: incrementCounter 100ms forwards;
 }
 
 .doing-animation {
   transition: opacity 250ms;
   opacity: 0;
+}
+
+@keyframes incrementCounter {
+  0% {
+    translate: 2.5px 0;
+  }
+
+  100% {
+    translate: 0;
+  }
+
 }
