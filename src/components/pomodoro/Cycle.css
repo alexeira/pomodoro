@@ -1,0 +1,30 @@
+.cycle {
+  position: absolute;
+  bottom: 70px;
+  font-size: clamp(1.25rem, 5vw, 1.8rem);
+  font-family: var(--font-dm-sans);
+  font-weight: 700;
+  opacity: 0;
+  user-select: none;
+}
+
+.cycle-animation {
+  animation: show-cycle 2s forwards;
+}
+
+@keyframes show-cycle {
+  0% {
+    translate: 0 -10px;
+    opacity: 0;
+  }
+
+  50% {
+    translate: 0 0;
+    opacity: 1;
+  }
+
+  100% {
+    translate: 0 10px;
+    opacity: 0;
+  }
+}
