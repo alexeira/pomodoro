@@ -1,11 +1,13 @@
 .buttons-section {
+  position: fixed;
+  bottom: 0;
   display: flex;
   width: 100%;
   justify-content: center;
   align-items: center;
   gap: 10px;
-  margin-block-start: 1.5rem;
-  margin-inline-end: .56rem;
+  padding-block-end: 20px;
+  padding-inline-end: 7px;
 }
 
 .menu-button {
@@ -92,4 +94,14 @@
   translate: 40px 0;
   rotate: 50deg;
   transition: rotate 150ms ease-out, translate 150ms ease-out;
+}
+
+.hidden-menu {
+  opacity: 0;
+  transition: opacity 250ms;
+}
+
+.hidden-menu:hover {
+  opacity: 1;
+  transition: opacity 250ms;
 }
