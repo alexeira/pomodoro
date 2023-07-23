@@ -1,11 +1,12 @@
 .container {
-  border: 1px solid #572d1c;
+  border: 1px outset var(--bole);
   background-color: #fff5ee;
   border-radius: 5px;
   min-height: 100dvh;
   display: flex;
   justify-content: center;
-  gap: 40px;
+  align-items: center;
   text-align: center;
+  flex-direction: column-reverse;
   overflow: hidden;
 }

@@ -1,15 +1,15 @@
 .titlebar {
-  height: 30px;
   user-select: none;
   display: flex;
   justify-content: flex-end;
+  width: 100%;
   position: fixed;
-  top: .5px;
-  left: 0;
-  right: .6px;
+  top: 1.1px;
+  right: 1.1px;
 }
 
 .titlebar-button {
+  all: unset;
   display: inline-flex;
   justify-content: center;
   align-items: center;
@@ -17,13 +17,27 @@
   height: 30px;
   transition: background 200ms;
 
-  &:hover,
-  &:focus {
+  & svg {
+    margin-inline-start: 1px;
+  }
+
+  &:nth-child(2) {
+    border-top-right-radius: 2.8px;
+  }
+
+  &:hover {
     background: var(--peash);
 
-    &:nth-child(3) {
-      border-top-right-radius: 2.7px;
+    &:nth-child(2) {
       background: var(--damasco);
     }
   }
+}
+
+.titlebar-button:hover .circle {
+  fill: #f7b88b;
+}
+
+.circle {
+  transition: fill 200ms;
 }
