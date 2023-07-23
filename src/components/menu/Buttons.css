@@ -51,8 +51,8 @@
   background: none;
   margin-inline-start: -1px;
   border-radius: 5px;
-  min-width: 45px;
-  height: 45px;
+  min-width: 50px;
+  height: 50px;
 
   & path {
     fill: var(--bole);
