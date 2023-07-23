@@ -7,7 +7,7 @@ export const PomodoroContext = createContext<PomodoroContextProps | null>(null)
 export function PomodoroProvider({ children }: { children: React.ReactNode }) {
   const [pomodoro, setPomodoro] = useState<Pomodoro>({
     timeRemaining: 1500,
-    doing: 'studying',
+    doing: 'learning kuma ui',
     cycle: 'pomodoro',
     cycleCounter: 1
   })
@@ -80,6 +80,13 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
     }))
   }
 
+  // function changeDoing(doing: string) {
+  //   setPomodoro(prevPomodoro => ({
+  //     ...prevPomodoro,
+  //     doing: doing
+  //   }))
+  // }
+
   function handleInterval() {
     setPomodoro(prevPomodoro => ({
       ...prevPomodoro,
@@ -113,6 +120,7 @@ export function PomodoroProvider({ children }: { children: React.ReactNode }) {
         startTimer,
         pauseTimer,
         stopTimer,
+
         nextCycle
       }}
     >
