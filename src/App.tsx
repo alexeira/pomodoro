@@ -1,13 +1,26 @@
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 
 import { Container } from './components/layout/Container'
 import { TitleBar } from './components/layout/TitleBar'
 import { Pomodoro } from './components/pomodoro/Pomodoro'
 import { TimerMenu } from './components/menu/TimerMenu'
 import { usePomodoro } from './hooks/usePomodoro'
+import Alarm from './assets/alarm.mp3'
 
 export default function App() {
-  const { isRunning, startTimer, pauseTimer, stopTimer, nextCycle } = usePomodoro()
+  const { isRunning, pomodoro, startTimer, pauseTimer, stopTimer, nextCycle } = usePomodoro()
+  const { timeRemaining } = pomodoro
+  const audioPlayer = useRef<HTMLAudioElement>(null)
+
+  function playAudio() {
+    audioPlayer.current?.play()
+  }
+
+  useEffect(() => {
+    if (timeRemaining === 0) {
+      playAudio()
+    }
+  }, [timeRemaining])
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -15,7 +28,7 @@ export default function App() {
         event.preventDefault()
         isRunning ? pauseTimer() : startTimer()
       }
-      if (event.key === 'Backspace') {
+      if (event.key === 'r') {
         event.preventDefault()
         stopTimer()
       }
@@ -35,6 +48,7 @@ export default function App() {
   return (
     <>
       <Container>
+        {audioPlayer && <audio ref={audioPlayer} preload="auto" src={Alarm} />}
         <TitleBar />
         <TimerMenu />
         <Pomodoro />
