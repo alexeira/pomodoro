@@ -15,14 +15,44 @@
   align-items: center;
 }
 
+.cycle-on-change {
+  animation: showTimer 200ms forwards;
+}
+
+.cycle-on-reset {
+  animation: loadTimer 200ms forwards;
+}
+
 .timer {
+  position: absolute;
+  bottom: 30px;
   translate: 0;
   scale: 1;
   transition: translate 250ms, scale 250ms;
 }
 
 .timer-animation {
-  translate: 0 35px;
+  translate: 0 38px;
   scale: 1.15;
   transition: translate 250ms, scale 250ms;
+}
+
+@keyframes showTimer {
+  0% {
+    translate: 2.5px 0;
+  }
+
+  100% {
+    translate: 0;
+  }
+}
+
+@keyframes loadTimer {
+  0% {
+    scale: 0.95;
+  }
+
+  100% {
+    scale: 1;
+  }
 }

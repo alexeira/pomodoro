@@ -1,12 +1,23 @@
 import { usePomodoro } from '../../hooks/usePomodoro'
 import './Timer.css'
 
-export default function Timer() {
-  const { formatedTime, isRunning } = usePomodoro()
+export function Timer() {
+  const { formatedTime, isRunning, pomodoro } = usePomodoro()
+  const { timeRemaining, cycle, cycleCounter } = pomodoro
+
+  const isPomodoroCycle = timeRemaining === 1500 && cycle === 'pomodoro' && cycleCounter === 1
+  const isCycleOnChange = cycleCounter > 1 || cycle === 'short-break'
 
   return (
     <div aria-disabled={isRunning} className={`timer ${isRunning ? 'timer-animation' : ''}`}>
-      <h1 className="text-timer">{formatedTime}</h1>
+      <h1
+        key={cycle}
+        className={`text-timer ${isCycleOnChange ? 'cycle-on-change' : ''}${
+          isPomodoroCycle ? 'cycle-on-reset' : ''
+        }`}
+      >
+        {formatedTime}
+      </h1>
     </div>
   )
 }
