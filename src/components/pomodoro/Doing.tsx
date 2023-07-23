@@ -4,15 +4,14 @@ import { CycleCounter } from './CycleCounter'
 import './Doing.css'
 
 export function Doing() {
-  const { isRunning, pomodoro } = usePomodoro()
-  const { doing } = pomodoro
+  const { isRunning } = usePomodoro()
 
   return (
     <div
       aria-disabled={isRunning}
       className={`doing-section ${isRunning ? 'doing-animation' : ''}`}
     >
-      <span className="text-doing">{doing}</span>
+      {/* <span className="text-doing">{doing}</span> */}
       <CycleCounter />
     </div>
   )
